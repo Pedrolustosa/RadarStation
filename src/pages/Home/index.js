@@ -10,10 +10,7 @@ export default function Home() {
  return (
    <View>
        <Text>Home</Text>
-       <Text>{ user && user.name }</Text>
-       <Text>{ user && user.email }</Text>
-       <Text>{ user && user.age }</Text>
-       <Text>{ user && user.gender }</Text>
+       
 
        <Button
        title="Sair da conta"
