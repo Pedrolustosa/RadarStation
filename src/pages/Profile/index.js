@@ -26,10 +26,6 @@ export default function Profile() {
        <Text>Genêro:{ user && user.gender }</Text>
       </View>
 
-       <Text onPress={ () => navigation.navigate('Registrar') } >
-         <Text>Registrar gastos</Text>
-       </Text>
-
        <TouchableOpacity
        style={{
          margin: 36,

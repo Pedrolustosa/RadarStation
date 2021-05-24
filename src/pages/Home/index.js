@@ -10,7 +10,6 @@ export default function Home() {
  return (
    <View>
        <Text>Home</Text>
-       
 
        <Button
        title="Sair da conta"
