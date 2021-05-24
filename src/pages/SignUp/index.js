@@ -1,0 +1,115 @@
+import React, {useState, useContext} from 'react';
+import { StyleSheet, ScrollView, Platform } from 'react-native';
+import FormInput from '../../Utils/FormInput';
+import FormButton from '../../Utils/FormButton';
+
+import { AuthContext } from '../../contexts/auth';
+
+export default function SignIn() {
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { signUp } = useContext(AuthContext);
+
+  function handleSingUp(){
+    signUp(email, password, name, age, gender);
+  }
+
+  return (
+    <ScrollView 
+    contentContainerStyle={styles.container} 
+    behavior={Platform.OS === 'ios' ? 'padding' : ''}
+    enabled
+    >
+
+      <FormInput
+        labelValue={name}
+        placeholder="Nome"
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={name}
+        iconType="user"
+        onChangeText={(text) => setName(text)}
+      />
+
+      <FormInput
+        labelValue={age}
+        placeholder="Idade"
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={age}
+        iconType="user"
+        onChangeText={(text) => setAge(text)}
+      />
+
+      <FormInput
+        labelValue={gender}
+        placeholder="Gênero"
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={gender}
+        iconType="user"
+        onChangeText={(text) => setGender(text)}
+      />
+
+      <FormInput
+        labelValue={email}
+        placeholder="E-mail"
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={email}
+        iconType="user"
+        onChangeText={(text) => setEmail(text)}
+      />
+
+      <FormInput
+        labelValue={password}
+        placeholder="Senha"
+        autoCorrect={false}
+        autoCapitalize="none"
+        value={password}
+        iconType="lock"
+        onChangeText={(text) => setPassword(text)}
+      />
+
+      <FormButton
+        onPress={handleSingUp}
+        buttonTitle="Sign In"
+      />
+
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    paddingTop: 50
+  },
+  logo: {
+    height: 150,
+    width: 150,
+    resizeMode: 'cover',
+  },
+  text: {
+    fontSize: 28,
+    marginBottom: 10,
+    color: '#051d5f',
+  },
+  navButton: {
+    marginTop: 15,
+  },
+  forgotButton: {
+    marginVertical: 35,
+  },
+  navButtonText: {
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#2e64e5'
+  }
+});
