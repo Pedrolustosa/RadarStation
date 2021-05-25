@@ -2,7 +2,6 @@ import React, { useState, useEffect, createContext } from 'react';
 import firebase from '../services/firebaseConnection';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
@@ -17,10 +16,8 @@ function AuthProvider({ children }) {
               setUser(JSON.parse(storageUser));
               setLoading(false);
           }
-
           setLoading(false);
       }
-      
       loadStorage();
    }, []);
 
