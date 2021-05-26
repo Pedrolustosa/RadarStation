@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+import Header from '../../Utils/Header';
 
 import { AuthContext } from '../../contexts/auth';
 
@@ -15,7 +16,8 @@ export default function Profile() {
  const { user, signOut } = useContext(AuthContext);
 
  return (
-   <View style={{marginTop: 50}}>
+   <View>
+     <Header/>
       <View style={{fontSize: 16, margin: 25, alignItems: 'center'}}>
       <Image
         source={require('../../assets/Logo.png')}

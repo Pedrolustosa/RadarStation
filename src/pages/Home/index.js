@@ -1,20 +1,17 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext } from 'react';
 import { View, Text, Button  } from 'react-native';
 import MapView from 'react-native-maps';
+import Header from '../../Utils/Header';
 
 import { AuthContext } from '../../contexts/auth';
 
 export default function Home() {
 
-  const { signOut } = useContext(AuthContext);
-
  return (
    <View>
-       <Text>Home a</Text>
-
+     <Header/>
       <MapView
-      style={{width: 350, height: 350}}
+      style={{width: 380, height: 350, marginTop: 20, margin: 15}}
         initialRegion={{
           latitude:-23.5492243,
           longitude:-46.5813785,
@@ -22,11 +19,6 @@ export default function Home() {
           longitudeDelta: 0.0421
         }}
       />
-
-       <Button
-       title="Sair da conta"
-       onPress={ () => signOut() }
-       />
    </View>
   );
 }
