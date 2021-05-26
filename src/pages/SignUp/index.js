@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { StyleSheet, ScrollView, Platform } from 'react-native';
+import { StyleSheet, ScrollView, Platform, Text } from 'react-native';
 import FormInput from '../../Utils/FormInput';
 import FormButton from '../../Utils/FormButton';
 
@@ -24,6 +24,7 @@ export default function SignIn() {
     behavior={Platform.OS === 'ios' ? 'padding' : ''}
     enabled
     >
+      <Text style={{alignItems: 'center', fontSize: 32, marginBottom: 10}}>Bem-Vindo</Text>
 
       <FormInput
         labelValue={name}
@@ -41,7 +42,7 @@ export default function SignIn() {
         autoCorrect={false}
         autoCapitalize="none"
         value={age}
-        iconType="user"
+        iconType="calendar-o"
         onChangeText={(text) => setAge(text)}
       />
 
@@ -51,7 +52,7 @@ export default function SignIn() {
         autoCorrect={false}
         autoCapitalize="none"
         value={gender}
-        iconType="user"
+        iconType="venus-mars"
         onChangeText={(text) => setGender(text)}
       />
 
@@ -61,7 +62,7 @@ export default function SignIn() {
         autoCorrect={false}
         autoCapitalize="none"
         value={email}
-        iconType="user"
+        iconType="at"
         onChangeText={(text) => setEmail(text)}
       />
 

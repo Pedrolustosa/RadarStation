@@ -40,7 +40,7 @@ export default function SignIn() {
         labelValue={email}
         value={email}
         placeholderText="Email"
-        iconType="user"
+        iconType="at"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}

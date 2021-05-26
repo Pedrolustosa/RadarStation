@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { View, Text, Button  } from 'react-native';
+import { View } from 'react-native';
 import MapView from 'react-native-maps';
 import Header from '../../Utils/Header';
 
 import { AuthContext } from '../../contexts/auth';
+import { Marker } from 'react-native-maps';
 
 export default function Home() {
 
