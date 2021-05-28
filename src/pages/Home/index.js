@@ -1,145 +1,133 @@
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 import {
-  PermissionsAndroid,
-  Alert,
   View,
-  Text,
+  ScrollView,
   TouchableOpacity,
+  Text,
   StyleSheet,
 } from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
+import MapView from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-const App = () => {
-  const [position, setPosition] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
-  const request_location_runtime_permission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        {
-          title: 'Permissão de Localização',
-          message: 'A aplicação precisa da permissão de localização.',
-        },
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        Geolocation.getCurrentPosition(
-          pos => {
-            setPosition({
-              ...position,
-              latitude: pos.coords.latitude,
-              longitude: pos.coords.longitude,
-            });
+import MapViewDirections from 'react-native-maps-directions';
+import getPixel from '../../Utils/utils';
+
+export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      region: null,
+      destLocation: null,
+    };
+  }
+
+  async componentDidMount() {
+    await Geolocation.getCurrentPosition(
+      async ({coords: {latitude, longitude}}) => {
+        this.setState({
+          region: {
+            latitude,
+            longitude,
+            latitudeDelta: 0.0015,
+            longitudeDelta: 0.00121,
           },
-          error => {
-            console.log(error);
-            Alert.alert('Houve um erro ao pegar a latitude e longitude.');
-          },
-        );
-      } else {
-        Alert.alert('Permissão de localização não concedida');
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  return (
-    <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        region={position}
-        onPress={e =>
-          setPosition({
-            ...position,
-            latitude: e.nativeEvent.coordinate.latitude,
-            longitude: e.nativeEvent.coordinate.longitude,
-          })
-        }>
-        <Marker
-          coordinate={position}
-          title={'Marcador'}
-          description={'Testando o marcador no mapa'}
-        />
-      </MapView>
-      <View style={styles.positonBox}>
-        <Text style={styles.positonBoxTitle}>Sua Localização</Text>
-        <View style={styles.positonBoxLatLon}>
-          <Text style={{fontSize: 18}}>Lat.</Text>
-          <Text style={{fontSize: 18}}>{position.latitude}</Text>
-        </View>
-        <View style={styles.positonBoxLatLon}>
-          <Text style={{fontSize: 18}}>Lon.</Text>
-          <Text style={{fontSize: 18}}>{position.longitude}</Text>
-        </View>
+        });
+      },
+      () => {}, //Erro
+      {
+        timeout: 3000,
+        enableHighAccuracy: true,
+        maximumAge: 2000,
+      },
+    );
+  }
+
+  render() {
+    const {region} = this.state;
+
+    return (
+      <View style={styles.container}>
+        <MapView
+          ref={map => {
+            this.map = map;
+          }}
+          style={styles.mapa}
+          region={region}
+          loadingEnabled
+          showsUserLocation>
+          {this.state.destLocation && (
+            <MapViewDirections
+              origin={this.state.region}
+              destination={this.state.destLocation}
+              apikey="AIzaSyDEkSXnr0vIjp8Jf_V2ydSOD2tpS5ZxlJU"
+              strokeWidth={5}
+              strokeColor="#000"
+              onReady={result => {
+                this.map.fitToCoordinates(result.coordinates, {
+                  edgePadding: {
+                    right: getPixel(50),
+                    left: getPixel(50),
+                    top: getPixel(50),
+                    bottom: getPixel(50),
+                  },
+                });
+              }}
+            />
+          )}
+        </MapView>
+
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          style={styles.box}>
+          <View style={styles.localView}>
+            <TouchableOpacity
+              style={styles.localBtn}
+              onPress={() => {
+                this.setState({
+                  destLocation: {
+                    latitude: -8.0085,
+                    longitude: -34.87994,
+                  },
+                });
+              }}>
+              <Text style={styles.localText}>Posto Petrobrás</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
-      <TouchableOpacity
-        style={styles.locationButton}
-        onPress={() => {
-          request_location_runtime_permission();
-        }}>
-        <Icon name="my-location" color={'#fff'} size={30} />
-      </TouchableOpacity>
-      <View style={styles.logo}>
-        <Text style={styles.logoText}>Samurai</Text>
-        <Text style={[styles.logoText, {color: '#e74c3c'}]}>Map</Text>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  map: {
-    height: '100%',
-    width: '100%',
+  mapa: {
+    flex: 1,
   },
-  logo: {
-    backgroundColor: '#fff',
-    borderRadius: 15,
-    paddingHorizontal: 15,
-    elevation: 5,
-    marginTop: -730,
-    alignSelf: 'center',
-    marginRight: 10,
-    flexDirection: 'row',
+  box: {
+    position: 'absolute',
+    top: 30,
+    margin: 10,
+    height: 70,
   },
-  logoText: {
-    fontWeight: 'bold',
-    fontSize: 22,
-  },
-  positonBox: {
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    opacity: 0.75,
-    marginTop: -170,
-    marginHorizontal: 40,
-    padding: 25,
-    shadowColor: '#000',
-    elevation: 5,
-  },
-  positonBoxTitle: {
-    textAlign: 'center',
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#e74c3c',
-  },
-  positonBoxLatLon: {flexDirection: 'row', justifyContent: 'space-between'},
-  locationButton: {
-    backgroundColor: '#e74c3c',
-    borderRadius: 150,
-    marginTop: -25,
-    width: 50,
-    height: 50,
-    alignSelf: 'center',
-    justifyContent: 'center',
+  localView: {
+    height: 40,
+    padding: 5,
     alignItems: 'center',
-    shadowColor: '#000',
-    elevation: 8,
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  localBtn: {
+    backgroundColor: '#2ecc71',
+    height: 40,
+    padding: 7,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  localText: {
+    color: '#FFF',
   },
 });
-export default App;
