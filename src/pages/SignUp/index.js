@@ -23,7 +23,7 @@ export default function SignIn() {
       contentContainerStyle={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : ''}
       enabled>
-      <Text style={{alignItems: 'center', fontSize: 32, marginBottom: 10}}>
+      <Text style={{alignItems: 'center', fontSize: 36, marginBottom: 15}}>
         Bem-Vindo
       </Text>
 
@@ -77,7 +77,11 @@ export default function SignIn() {
         onChangeText={text => setPassword(text)}
       />
 
-      <FormButtonSign onPress={handleSingUp} buttonTitle="Sign In" />
+      <FormButtonSign
+        onPress={handleSingUp}
+        iconType="plus-circle"
+        buttonTitle="Criar Conta"
+      />
     </ScrollView>
   );
 }
