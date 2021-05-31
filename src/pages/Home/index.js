@@ -82,7 +82,7 @@ export default class Home extends Component {
                     },
                   });
                 }}>
-                <Text style={styles.localText}>Posto Petrobrás</Text>
+                <Text style={styles.localText}>Posto </Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
