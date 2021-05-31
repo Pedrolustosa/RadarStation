@@ -10,6 +10,7 @@ import Header from '../../Utils/Header';
 import MapView from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
 import MapViewDirections from 'react-native-maps-directions';
+import FormButton from '../../Utils/FormButton';
 
 
 export default class Home extends Component {
@@ -87,6 +88,7 @@ export default class Home extends Component {
             </View>
           </ScrollView>
         </View>
+        <FormButton/>
       </View>
     );
   }
