@@ -1,9 +1,9 @@
 import React, {useState, useContext} from 'react';
-import { StyleSheet, ScrollView, Platform, Text } from 'react-native';
+import {StyleSheet, ScrollView, Platform, Text} from 'react-native';
 import FormInput from '../../Utils/FormInput';
-import FormButton from '../../Utils/FormButton';
+import FormButtonSign from '../../Utils/FormButtonSign';
 
-import { AuthContext } from '../../contexts/auth';
+import {AuthContext} from '../../contexts/auth';
 
 export default function SignIn() {
   const [name, setName] = useState('');
@@ -12,19 +12,20 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { signUp } = useContext(AuthContext);
+  const {signUp} = useContext(AuthContext);
 
-  function handleSingUp(){
+  function handleSingUp() {
     signUp(email, password, name, age, gender);
   }
 
   return (
-    <ScrollView 
-    contentContainerStyle={styles.container} 
-    behavior={Platform.OS === 'ios' ? 'padding' : ''}
-    enabled
-    >
-      <Text style={{alignItems: 'center', fontSize: 32, marginBottom: 10}}>Bem-Vindo</Text>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : ''}
+      enabled>
+      <Text style={{alignItems: 'center', fontSize: 32, marginBottom: 10}}>
+        Bem-Vindo
+      </Text>
 
       <FormInput
         labelValue={name}
@@ -33,7 +34,7 @@ export default function SignIn() {
         autoCapitalize="none"
         value={name}
         iconType="user"
-        onChangeText={(text) => setName(text)}
+        onChangeText={text => setName(text)}
       />
 
       <FormInput
@@ -43,7 +44,7 @@ export default function SignIn() {
         autoCapitalize="none"
         value={age}
         iconType="calendar-o"
-        onChangeText={(text) => setAge(text)}
+        onChangeText={text => setAge(text)}
       />
 
       <FormInput
@@ -53,7 +54,7 @@ export default function SignIn() {
         autoCapitalize="none"
         value={gender}
         iconType="venus-mars"
-        onChangeText={(text) => setGender(text)}
+        onChangeText={text => setGender(text)}
       />
 
       <FormInput
@@ -63,7 +64,7 @@ export default function SignIn() {
         autoCapitalize="none"
         value={email}
         iconType="at"
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={text => setEmail(text)}
       />
 
       <FormInput
@@ -73,14 +74,10 @@ export default function SignIn() {
         autoCapitalize="none"
         value={password}
         iconType="lock"
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={text => setPassword(text)}
       />
 
-      <FormButton
-        onPress={handleSingUp}
-        buttonTitle="Sign In"
-      />
-
+      <FormButtonSign onPress={handleSingUp} buttonTitle="Sign In" />
     </ScrollView>
   );
 }
@@ -90,7 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    paddingTop: 50
+    paddingTop: 50,
   },
   logo: {
     height: 150,
@@ -111,6 +108,6 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: 18,
     fontWeight: '500',
-    color: '#2e64e5'
-  }
+    color: '#2e64e5',
+  },
 });
