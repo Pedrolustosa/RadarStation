@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Header from '../../Utils/Header';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
 import MapViewDirections from 'react-native-maps-directions';
 
@@ -27,8 +27,8 @@ export default class Home extends Component {
           region: {
             latitude,
             longitude,
-            latitudeDelta: 0.002,
-            longitudeDelta: 0.002,
+            latitudeDelta: 0.006,
+            longitudeDelta: 0.006,
           },
         });
       },
@@ -65,26 +65,23 @@ export default class Home extends Component {
                 strokeColor="#000"
               />
             )}
+            <Marker
+              coordinate={{
+                latitude: -8.0083728,
+                longitude: -34.8798883,
+              }}
+              title="Posto Petrobrás"
+              description="Gasolina: R$ 4.56, Alcóol: R$ 3.56"
+            />
+            <Marker
+              coordinate={{
+                latitude: -8.00563,
+                longitude: -34.884951,
+              }}
+              title="Posto NVC III"
+              description="Comum: R$ 4.17 | Etanol: R$ 3.17"
+            />
           </MapView>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            style={styles.box}>
-            <View style={styles.localView}>
-              <TouchableOpacity
-                style={styles.localBtn}
-                onPress={() => {
-                  this.setState({
-                    destLocation: {
-                      latitude: -8.00837,
-                      longitude: -34.87994,
-                    },
-                  });
-                }}>
-                <Text style={styles.localText}>Posto Petrobrás</Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
         </View>
       </View>
     );
@@ -96,32 +93,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: 380,
+    height: 325,
     marginTop: 15,
     paddingTop: 15,
-  },
-  box: {
-    position: 'absolute',
-    top: 10,
-    margin: 10,
-    height: 50,
-  },
-  localView: {
-    height: 40,
-    padding: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 7,
-  },
-  localBtn: {
-    backgroundColor: '#FF0000',
-    height: 35,
-    padding: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 12,
-  },
-  localText: {
-    color: '#FFF',
   },
 });
