@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import {StyleSheet, ScrollView, Platform, Text} from 'react-native';
 import FormInput from '../../Utils/FormInput';
 import FormButtonSign from '../../Utils/FormButtonSign';
+import RNPickerSelect from '../../Utils/FormPicker';
 
 import {AuthContext} from '../../contexts/auth';
 
@@ -47,14 +48,11 @@ export default function SignIn() {
         onChangeText={text => setAge(text)}
       />
 
-      <FormInput
-        labelValue={gender}
-        placeholder="Gênero"
-        autoCorrect={false}
-        autoCapitalize="none"
-        value={gender}
+      <RNPickerSelect
         iconType="venus-mars"
-        onChangeText={text => setGender(text)}
+        onValueChange={itemValue => setGender(itemValue)}
+        labelValue={gender}
+        gender={gender}
       />
 
       <FormInput
@@ -73,6 +71,7 @@ export default function SignIn() {
         autoCorrect={false}
         autoCapitalize="none"
         value={password}
+        secureTextEntry={true}
         iconType="lock"
         onChangeText={text => setPassword(text)}
       />

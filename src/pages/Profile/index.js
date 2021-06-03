@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Image, StyleSheet} from 'react-native';
-import Header from '../../Utils/Header';
 import FormInput from '../../Utils/FormInput';
 import FormButtonDelete from '../../Utils/FormButtonDelete';
 import FormButtonSign from '../../Utils/FormButtonSign';
@@ -15,7 +14,6 @@ export default function Profile() {
 
   return (
     <View>
-      <Header />
       <View style={{fontSize: 16, margin: 25, alignItems: 'center'}}>
         <Image source={require('../../assets/Logo.png')} />
 
