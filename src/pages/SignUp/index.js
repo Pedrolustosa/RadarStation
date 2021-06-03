@@ -1,8 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, Component} from 'react';
 import {StyleSheet, ScrollView, Platform, Text} from 'react-native';
 import FormInput from '../../Utils/FormInput';
 import FormButtonSign from '../../Utils/FormButtonSign';
 import RNPickerSelect from '../../Utils/FormPicker';
+import DatePicker from '../../Utils/FormDate';
 
 import {AuthContext} from '../../contexts/auth';
 
@@ -38,15 +39,7 @@ export default function SignIn() {
         onChangeText={text => setName(text)}
       />
 
-      <FormInput
-        labelValue={age}
-        placeholder="Idade"
-        autoCorrect={false}
-        autoCapitalize="none"
-        value={age}
-        iconType="calendar-o"
-        onChangeText={text => setAge(text)}
-      />
+      <DatePicker date={age} value={age} onDateChange={text => setAge(text)} />
 
       <RNPickerSelect
         iconType="venus-mars"
