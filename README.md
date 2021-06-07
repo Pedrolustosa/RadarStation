@@ -16,12 +16,9 @@ A aplicação foi desenvolvida para mostrar postos e gasolina mais próximo da s
 
 # ✅ Status do Projeto
 <h4 align="center"> 
-<<<<<<< HEAD
 	🚧 RadarStation 🚀 Em construção... 🚧
-=======
-	🚧 Radar Station 🚀 Em construção... 🚧
->>>>>>> 50a1fc727e56d1c2d092ea2bfaed288ba825806b
 </h4>
+
 
 # Layout mobile
 ![Mobile 1](https://github.com/AlvaroLauriano/Radar_Station_Read-me/blob/main/assets/tela%20bem%20vindo.png)![Mobile 2](https://github.com/AlvaroLauriano/Radar_Station_Read-me/blob/main/assets/tela%20bem%202.png)![Mobile 3](https://github.com/AlvaroLauriano/Radar_Station_Read-me/blob/main/assets/tela%20de%20cadastro.png)![Mobile 4](https://github.com/AlvaroLauriano/Radar_Station_Read-me/blob/main/assets/maps.png)![Mobile 4](https://github.com/AlvaroLauriano/Radar_Station_Read-me/blob/main/assets/gif-radar.gif )
@@ -36,13 +33,8 @@ A aplicação foi desenvolvida para mostrar postos e gasolina mais próximo da s
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-<<<<<<< HEAD
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [AndroidStudio](https://developer.android.com/studio), [Python2](https://www.python.org/download/releases/2.0/) e o  [Jdk8](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html)
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/) ()
-=======
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [AndroidStudio](https://developer.android.com/studio) e o  [jdk8](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html)
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
->>>>>>> 50a1fc727e56d1c2d092ea2bfaed288ba825806b
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/) 
 
 
 ### # 📥 Como Baixar e 🎲 Rodar o Projeto.  
