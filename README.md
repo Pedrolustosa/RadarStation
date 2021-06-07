@@ -16,11 +16,7 @@ A aplicação foi desenvolvida para mostrar postos e gasolina mais próximo da s
 
 # ✅ Status do Projeto
 <h4 align="center"> 
-<<<<<<< HEAD
 	🚧 RadarStation 🚀 Em construção... 🚧
-=======
-	🚧 Radar Station 🚀 Em construção... 🚧
->>>>>>> 50a1fc727e56d1c2d092ea2bfaed288ba825806b
 </h4>
 
 # Layout mobile
@@ -36,13 +32,8 @@ A aplicação foi desenvolvida para mostrar postos e gasolina mais próximo da s
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-<<<<<<< HEAD
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [AndroidStudio](https://developer.android.com/studio), [Python2](https://www.python.org/download/releases/2.0/) e o  [Jdk8](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html)
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/) ()
-=======
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [AndroidStudio](https://developer.android.com/studio) e o  [jdk8](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html)
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
->>>>>>> 50a1fc727e56d1c2d092ea2bfaed288ba825806b
 
 
 ### # 📥 Como Baixar e 🎲 Rodar o Projeto.  
